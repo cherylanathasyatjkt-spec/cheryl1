@@ -1,1 +1,491 @@
-helooooooo worddd
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Cheryl Anathasya</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 50px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            color: #ff9a9e;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #fff5f7;
+            border-radius: 10px;
+            border-left: 4px solid #ff9a9e;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #ff9a9e;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #ff9a9e;
+        }
+
+        .timeline-item h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.3em;
+        }
+
+        .timeline-item p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5f7 0%, #f8f0f3 100%);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item i {
+            font-size: 2em;
+            color: #ff9a9e;
+            width: 50px;
+        }
+
+        .skill-bar {
+            flex: 1;
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9a9e, #fecfef);
+            border-radius: 4px;
+            transition: width 2s ease;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            background: white;
+            color: #ff9a9e;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            main {
+                padding: 30px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="profile-img">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Cheryl Anathasya">
+            </div>
+            <h1>Cheryl Anathasya</h1>
+            <p class="subtitle">Siswa SMK Negeri 6 | Multimedia & Web Development</p>
+            <div class="social-links">
+                <a href="https://wa.me/6281234567890" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/cherylanathasya" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@cherylanathasya" target="_blank" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="mailto:cheryl@example.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Tentang Saya -->
+            <section class="section">
+                <h2><i class="fas fa-user"></i> Tentang Saya</h2>
+                <p>
+                    Saya Cheryl Anathasya, siswa kelas 11 di <strong>SMK Negeri 6</strong> jurusan Multimedia. 
+                    Suka banget belajar Web Development, Graphic Design, dan Digital Marketing. 
+                    Sedang mempersiapkan diri untuk menjadi Junior Web Developer setelah lulus SMK.
+                </p>
+            </section>
+
+            <!-- Informasi Pribadi -->
+            <section class="section">
+                <h2><i class="fas fa-id-card"></i> Informasi Pribadi</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Nama Lengkap:</span>
+                        <span>Cheryl Anathasya</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Tempat, Tanggal Lahir:</span>
+                        <span>Jakarta, 12 Maret 2008</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Sekolah:</span>
+                        <span>SMK Negeri 6 Jakarta</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Kelas:</span>
+                        <span>XI Multimedia</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">No. HP:</span>
+                        <span>+62 812-3456-7890</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email:</span>
+                        <span>cheryl@example.com</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pendidikan -->
+            <section class="section">
+                <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>SMK Negeri 6 Jakarta</h3>
+                        <p>Multimedia - 2023 - 2026</p>
+                        <p>Nilai rata-rata: 8.7 | Prestasi: Juara 2 Lomba Web Design</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>SMP Negeri 12 Jakarta</h3>
+                        <p>2019 - 2022</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pengalaman & Prestasi -->
+            <section class="section">
+                <h2><i class="fas fa-award"></i> Prestasi & Proyek</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Juara 2 Lomba Web Design Tingkat Kota</h3>
+                        <p>Oktober 2024</p>
+                        <p>Dewan Juri: Dinas Pendidikan DKI Jakarta</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Freelance Graphic Design</h3>
+                        <p>2024 - Sekarang</p>
+                        <p>Membuat 15+ poster untuk UKM sekolah</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Admin Media Sosial</h3>
+                        <p>OSIS SMK 6 - 2024</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="section">
+                <h2><i class="fas fa-tools"></i> Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5/CSS3</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>Tailwind CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-canva"></i>
+                        <span>Canva & Figma</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2><i class="fas fa-envelope"></i> Hubungi Saya!</h2>
+            <p>Siap mengerjakan proyek web design atau magang!</p>
+            <a href="https://wa.me/6281234567890?text=Halo%20Cheryl,%20saya%20tertarik%20kolaborasi!" class="btn-contact">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll untuk anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.style.width;
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.querySelector('.section:last-of-type');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+</body>
+</html>
